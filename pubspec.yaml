@@ -11,22 +11,39 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  # Isar stuff
-  isar: ^3.1.0+1
-  isar_flutter_libs: ^3.1.0+1 # contains Isar Core
+  cupertino_icons: ^1.0.8
   # Riverpod stuff
   flutter_riverpod: ^2.6.1
-
-  cupertino_icons: ^1.0.8
+  riverpod_annotation: ^2.6.1
+  # Drift stuff
+  drift: ^2.26.0
+  drift_flutter: ^0.2.4
+  path_provider: ^2.1.5
+  # Google sign in
+  google_sign_in: ^6.1.5
+  # Drift viewer
+  drift_db_viewer: ^2.1.0
+  # launch icons
+  flutter_launcher_icons: ^0.14.3
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_lints: ^5.0.0
-  # Isar stuff
-  isar_generator: ^3.1.0+1
   build_runner: any
-  analyzer: ^5.13.0
+  # Riverpod stuff
+  custom_lint:
+  riverpod_generator: ^2.6.5
+  riverpod_lint: ^2.6.5
+  # Drift stuff
+  drift_dev: ^2.26.0
+
+flutter_launcher_icons:
+  android: "launcher_icon"
+  ios: true
+  remove_alpha_ios: true
+  image_path: 'lib/Assets/images/reveria.png'
+  min_sdk_android: 21 # android min sdk min:16, default 21
 
 
 
@@ -37,9 +54,8 @@ flutter:
   uses-material-design: true
 
   # To add assets to your application, add an assets section, like this:
-  # assets:
-  #   - images/a_dot_burr.jpeg
-  #   - images/a_dot_ham.jpeg
+  assets:
+    - lib/Assets/images/google.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images
