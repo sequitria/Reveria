@@ -6,3 +6,4 @@ final googleAuthProvider = Provider<GoogleAuthService>((ref) {
   final db = ref.watch(databaseProvider);
   return GoogleAuthService(db);
 });
+

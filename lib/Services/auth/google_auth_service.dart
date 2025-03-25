@@ -1,7 +1,6 @@
 import 'package:drift/drift.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:reveria/Models/app_database.dart';
-import 'package:reveria/Models/database_provider.dart';
 import 'package:reveria/Models/entities/user.dart';
 
 class GoogleAuthService {
