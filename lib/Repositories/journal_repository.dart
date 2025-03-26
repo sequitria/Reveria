@@ -1,7 +1,6 @@
 import 'package:drift/drift.dart';
 import 'package:reveria/Models/app_database.dart';
 import 'package:reveria/Models/entities/journal.dart';
-import 'package:reveria/Models/tables/journal_table.dart';
 
 class JournalRepository {
   final AppDatabase _db;
@@ -19,6 +18,25 @@ class JournalRepository {
           createdAt: journal.createdAt,
           updatedAt: journal.updatedAt,
         ));
+  }
+
+  // Get - get a list of existing journals --> don't have to be null as it will
+  //       return an empty list if null
+  Future<List<Journal>> getPaginatedJournals(
+      int userId, int limit, int offset) async {
+    // Order by updatedAt, find by user id, limit and offset for pagination
+    final query = _db.select(_db.journalTable)
+      ..orderBy([
+        (u) => OrderingTerm(expression: u.updatedAt, mode: OrderingMode.desc)
+      ])
+      ..where((t) => t.userId.equals(userId))
+      ..limit(limit, offset: offset);
+    // Get the list of journals as tables
+    final listOfJournals = await query.get();
+    // Convert table list to journal list in one line
+    return listOfJournals
+        .map((journalTable) => _mapTableToJournal(journalTable))
+        .toList();
   }
 
   // Get - read an existing journal
